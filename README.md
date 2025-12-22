@@ -1,11 +1,14 @@
 # pygruenbeck_cloud_api
 simple api for gruenbeck cloud devices (softliQ.D)
 
+[![Docker Image CI](https://github.com/fbarresi/pygruenbeck_cloud_api/actions/workflows/docker-image.yml/badge.svg)](https://github.com/fbarresi/pygruenbeck_cloud_api/actions/workflows/docker-image.yml) [![Docker Pulls](https://img.shields.io/docker/pulls/fbarresi/pygruenbeck-cloud-api.svg)](https://hub.docker.com/r/fbarresi/pygruenbeck-cloud-api/)
+
 This project offers a very simple API based on [pygruenbeck_cloud](https://github.com/p0l0/pygruenbeck_cloud).
 
 It is very easy and don't have the same wide range of feature of pygruenbeck_cloud, but it is useful to integrate other system over a REST-Api.
 
-**Disclaimer**: this API is stateless, if you need real-time data or reuse of the inner client please go for [pygruenbeck_cloud](https://github.com/p0l0/pygruenbeck_cloud) instead.
+**Disclaimer**: this API is stateless and dispose the client after each call. <br/>
+If you need real-time data or reuse of the inner client please go for [pygruenbeck_cloud](https://github.com/p0l0/pygruenbeck_cloud) or its wonderful Home Assistant integration instead.
 
 ## Usage
 
