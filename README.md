@@ -25,7 +25,7 @@ then visit [http://127.0.0.1:8000/docs](http://127.0.0.1:8000/docs).
 ### Use it from Docker
 
 ```
-docker run -p 80:80 --name pygruenbeck_cloud_api fbarresi/pygruenbeck-cloud-api
+docker run -p 80:80 --name pygruenbeck_cloud_api fbarresi/pygruenbeck-cloud-api:1.8
 ```
 
 ## Documentation
