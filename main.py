@@ -1,11 +1,8 @@
 from typing import Annotated
-
 from fastapi import Depends, FastAPI
 from fastapi.security import HTTPBasic, HTTPBasicCredentials
 from fastapi.middleware.cors import CORSMiddleware
-
 from pygruenbeck_cloud import PyGruenbeckCloud
-
 
 app = FastAPI()
 
@@ -93,3 +90,4 @@ def get_data_dict(infos):
    data["_software_version_raw"] = infos._software_version_raw
    #data["_software_version_raw_se"] = infos._software_version_raw_se
    return data
+
