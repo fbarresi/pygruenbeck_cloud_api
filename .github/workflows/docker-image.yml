@@ -23,6 +23,6 @@ jobs:
         password: ${{ secrets.DOCKER_PASSWORD }}
     - name: Build the Docker image
       run: |
-        docker buildx build --platform linux/arm64,linux/amd64 --file Dockerfile --tag fbarresi/pygruenbeck-cloud-api:1.${{ github.run_number }} -- push .
+        docker buildx build . --platform linux/arm64,linux/amd64 --file Dockerfile --tag fbarresi/pygruenbeck-cloud-api:1.${{ github.run_number }} -- push
 
     
