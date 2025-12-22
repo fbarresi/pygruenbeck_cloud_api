@@ -24,4 +24,5 @@ jobs:
     - name: Build the Docker image
       run: |
         docker buildx build --push --platform linux/arm64,linux/amd64 --tag fbarresi/pygruenbeck-cloud-api:1.${{ github.run_number }} .
+        docker buildx build --push --platform linux/arm64,linux/amd64 --tag fbarresi/pygruenbeck-cloud-api:latest .
     
