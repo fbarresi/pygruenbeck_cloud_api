@@ -25,12 +25,12 @@ then visit [http://127.0.0.1:8000/docs](http://127.0.0.1:8000/docs).
 ### Use it from Docker
 
 ```
-docker run -p 80:80 --name pygruenbeck_cloud_api fbarresi/pygruenbeck-cloud-api:1.8
+docker run -p 80:80 --name pygruenbeck_cloud_api fbarresi/pygruenbeck-cloud-api
 ```
 
 ## Documentation
 
-Once started the documentation is available under `/docs`:
+Once started the documentation is available under `http://127.0.0.1:80/docs`:
 
 Use your device SN as device id and your GruenbeckCloud credentials to authenticate.
 
@@ -81,7 +81,7 @@ It returns a json like this:
   "raw_water": 23,
   "soft_water": 8,
   "next_regeneration": "2025-12-24T04:23:00",
-  "_startup_raw": "2021-12-10",
+  "startup": "2021-12-10",
   "hardware_version": "00000004",
   "mode": 2,
   "software_version": "0003.0040",
