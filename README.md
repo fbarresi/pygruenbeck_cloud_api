@@ -34,15 +34,16 @@ Once started the documentation is available under `/docs`:
 
 Use your device SN as device id and your GruenbeckCloud credentials to authenticate.
 
-<img width="903" height="403" alt="image" src="https://github.com/user-attachments/assets/0f531b19-4602-4541-ab4d-42086092f479" />
+<img width="869" height="543" alt="image" src="https://github.com/user-attachments/assets/f36ceb67-2dc1-4f52-802d-e68565be231d" />
+
 
 It returns a json like this:
 
 ```json
 {
-  "id": "softliQ.D/BS00000001",
+  "id": "softliQ.D/BS0000001",
   "series": "softliQ.D",
-  "serial_number": "BS40041620",
+  "serial_number": "BS0000001",
   "name": "Mein Gerät",
   "type": 18,
   "has_errors": false,
@@ -50,19 +51,23 @@ It returns a json like this:
   "errors": [],
   "salt": [
     {
+      "value": 0,
+      "date": "2025-12-22"
+    },
+    {
       "value": 282,
       "date": "2025-12-21"
     },
     {
       "value": 0,
       "date": "2025-12-20"
-    },
-    {
-      "value": 117,
-      "date": "2025-12-19"
     }
   ],
   "water": [
+    {
+      "value": 182,
+      "date": "2025-12-22"
+    },
     {
       "value": 284,
       "date": "2025-12-21"
@@ -70,19 +75,16 @@ It returns a json like this:
     {
       "value": 138,
       "date": "2025-12-20"
-    },
-    {
-      "value": 89,
-      "date": "2025-12-19"
     }
   ],
   "nominal_flow": 1.8,
   "raw_water": 23,
   "soft_water": 8,
-  "_next_regeneration_raw": "2025-12-23T04:53:00",
+  "next_regeneration": "2025-12-24T04:23:00",
   "_startup_raw": "2021-12-10",
-  "_hardware_version_raw": "00000004",
-  "_mode_raw": 2,
-  "_software_version_raw": "0003.0040"
+  "hardware_version": "00000004",
+  "mode": 2,
+  "software_version": "0003.0040",
+  "time_zone_offset": 3600
 }
 ```
