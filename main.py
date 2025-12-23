@@ -18,7 +18,7 @@ security = HTTPBasic()
 
 @app.get("/devices/{device_id}")
 async def get(device_id: str, credentials: Annotated[HTTPBasicCredentials, Depends(security)]):
-   api = PyGruenbeckCloud(credentials.username, credentials.password)   
+   api = PyGruenbeckCloud(credentials.username, credentials.password)
    is_logged_in = await api.login()
    if(is_logged_in):
       device_found = await api.set_device_from_id("softliQ.D/"+device_id)
@@ -27,6 +27,21 @@ async def get(device_id: str, credentials: Annotated[HTTPBasicCredentials, Depen
          data = get_data_dict(infos)
          api.disconnect()
          return data
+      else:
+         raise Exception("Device not found")
+   else:
+      raise Exception("Unable to connect")
+
+@app.get("/devices/{device_id}/water")
+async def get(device_id: str, credentials: Annotated[HTTPBasicCredentials, Depends(security)]):
+   api = PyGruenbeckCloud(credentials.username, credentials.password)
+   is_logged_in = await api.login()
+   if(is_logged_in):
+      device_found = await api.set_device_from_id("softliQ.D/"+device_id)
+      if(device_found):
+         infos = await api.get_device_water_measurements()
+         api.disconnect()
+         return infos.water
       else:
          raise Exception("Device not found")
    else:
@@ -42,6 +57,21 @@ async def get(device_id: str, credentials: Annotated[HTTPBasicCredentials, Depen
          infos = await api.get_device_infos()
          api.disconnect()
          return infos.water[0].value
+      else:
+         raise Exception("Device not found")
+   else:
+      raise Exception("Unable to connect")
+
+@app.get("/devices/{device_id}/salt")
+async def get(device_id: str, credentials: Annotated[HTTPBasicCredentials, Depends(security)]):
+   api = PyGruenbeckCloud(credentials.username, credentials.password)
+   is_logged_in = await api.login()
+   if(is_logged_in):
+      device_found = await api.set_device_from_id("softliQ.D/"+device_id)
+      if(device_found):
+         infos = await api.get_device_salt_measurements()
+         api.disconnect()
+         return infos.salt
       else:
          raise Exception("Device not found")
    else:
@@ -79,15 +109,11 @@ def get_data_dict(infos):
    data["nominal_flow"] = infos.nominal_flow
    data["raw_water"] = infos.raw_water
    data["soft_water"] = infos.soft_water
-   data["_next_regeneration_raw"] = infos._next_regeneration_raw
-   #data["_next_regeneration_raw_se"] = infos._next_regeneration_raw_se
-   data["_startup_raw"] = infos._startup_raw
-   #data["_startup_raw_se"] = infos._startup_raw_se
-   data["_hardware_version_raw"] = infos._hardware_version_raw
-   #data["_hardware_version_raw_se"] = infos._hardware_version_raw_se
-   data["_mode_raw"] = infos._mode_raw
-   #data["_mode_raw_se"] = infos._mode_raw_se
-   data["_software_version_raw"] = infos._software_version_raw
-   #data["_software_version_raw_se"] = infos._software_version_raw_se
+   data["next_regeneration"] = infos._next_regeneration_raw
+   data["startup"] = infos._startup_raw
+   data["hardware_version"] = infos._hardware_version_raw
+   data["mode"] = infos._mode_raw
+   data["software_version"] = infos._software_version_raw
+   data["time_zone_offset"] = infos.time_zone.utcoffset(None)
    return data
 
